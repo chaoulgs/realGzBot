@@ -2,11 +2,13 @@
 /* global process */
 
 var fs = require('fs');
+var gzSecrets = require('./gzSecrets.js');
 var Discord = require("discord.js");
 var bot = new Discord.Client();
-var token = 'MjQ0MjE4NTc1ODY5NDQ0MDk5.Cv6WHQ.XqTsv8qJHwd-NM-DeC20Spitabo';
+var token = gzSecrets.discordToken;
 var request = require("request");
 var moment = require('moment');
+
 
 var gambleFile = 'gambledata.json';
 
@@ -116,6 +118,10 @@ bot.on("message", msg => {
 	if(msg.content === "!hmm") {
 		var variant = Math.floor(Math.random() * 2) + 1;
 		currentVoiceConnection.playFile("resources/audio/hmm" + variant + ".mp3");
+	}
+
+	if(msg.content === "!issues") {
+		currentVoiceConnection.playFile("resources/audio/issues.mp3");
 	}
 
 	if(msg.content === "!spit") {
